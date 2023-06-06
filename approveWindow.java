@@ -1,34 +1,37 @@
-import javax.swing.JOptionPane;
+import javax.swing.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class Opa {
+public class Name {
+
     public static void main(String[] args) {
-        int firstAnswer = JOptionPane.showConfirmDialog(null, "Да?", "Вопрос 1", JOptionPane.YES_NO_OPTION);
-        int firstResponse;
-        if (firstAnswer == JOptionPane.YES_OPTION) {
-            firstResponse = 1;
-        } else {
-            firstResponse = 0;
-        }
-        int secondAnswer = JOptionPane.showConfirmDialog(null, "Тоже да?", "Вопрос 2", JOptionPane.YES_NO_OPTION);
-        int secondResponse;
-        if (secondAnswer == JOptionPane.YES_OPTION) {
-            secondResponse = 1;
-        } else {
-            secondResponse = 0;
-        }
-        String message = "";
-        if ((firstResponse == 1 ) & (secondResponse == 1)){
-            message = "А вот нет";
-        }
-        if ((firstResponse == 1 ) & (secondResponse == 0)){
-            message = "Неа";
-        }
-        if ((firstResponse == 0 ) & (secondResponse == 1)){
-            message = "Да";
-        }
-        if ((firstResponse == 0 ) & (secondResponse == 0)){
-            message = "Да";
-        }
-        JOptionPane.showMessageDialog(null, message, "Ответы", JOptionPane.INFORMATION_MESSAGE);
+        JFrame frame = new JFrame("Пример окна");
+        frame.setSize(300, 200);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JLabel label = new JLabel();
+        frame.add(label);
+
+
+        frame.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+                    JOptionPane.showMessageDialog(frame, "Мое имя");
+                }
+            }
+        });
+
+        frame.setVisible(true);
     }
 }
